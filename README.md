@@ -264,10 +264,6 @@ ComfyUI_00001_.png
 
 ## Screenshots
 
-### ComfyUI Home
-
-screenshots/comfyui_home.png
-
 ### Workflow
 
 screenshots/workflow.png
