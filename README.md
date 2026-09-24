@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project demonstrates the deployment and usage of Stable Diffusion 1.5 using ComfyUI on Kaggle's free Tesla T4 GPUs.
+This project demonstrates the setup and usage of Stable Diffusion 1.5 using ComfyUI on Kaggle's free Tesla T4 GPUs.
 
-The primary objective was to understand the complete image generation workflow, from model deployment and GPU utilization to prompt-based image generation through a browser-accessible interface.
+The primary objective was to understand the complete image generation workflow, from model setup and GPU utilization to prompt-based image generation through a browser-accessible interface.
 
 Instead of relying on paid AI image generation platforms, this setup allows Stable Diffusion to run on free cloud infrastructure provided by Kaggle.
 
@@ -283,7 +283,7 @@ blurry, low quality, watermark, distorted
 
 ## Results
 
-Successfully deployed Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs and generated images through a browser-accessible interface.
+Successfully configured Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs and generated images through a browser-accessible interface.
 
 ### Generation Configuration
 
@@ -340,21 +340,19 @@ Through this project, I gained practical exposure to:
 - Prompt engineering
 - Cloud-based deployment environments
 - Cloudflare Tunnel integration
-- Model deployment and inference workflows
+- Model setup and inference workflows
 - AI image generation using text prompts
 
 ---
 
 ## Challenges Faced
 
-During implementation, the originally referenced Stable Diffusion repository used in the learning material was unavailable. To overcome this, the deployment approach was adapted by:
+During implementation, the originally referenced Stable Diffusion repository used in the learning material was unavailable. To overcome this, the setup approach was adapted by:
 
 - Switching from Automatic1111 to ComfyUI
 - Using Cloudflare Tunnel instead of Ngrok
 - Manually downloading and configuring Stable Diffusion 1.5
 - Creating a custom image generation workflow
-
-This provided a deeper understanding of the underlying deployment process.
 
 ---
 
