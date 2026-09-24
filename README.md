@@ -1,4 +1,4 @@
-# Stable Diffusion 1.5 Deployment and Image Generation using ComfyUI on Kaggle
+# Stable Diffusion 1.5 Setup and Image Generation using ComfyUI on Kaggle
 
 ## Overview
 
