@@ -1,4 +1,4 @@
-# Stable Diffusion 1.5 Deployment with ComfyUI on Kaggle
+# Stable Diffusion 1.5 Deployment and Image Generation using ComfyUI on Kaggle
 
 ## Overview
 
@@ -31,29 +31,31 @@ to create a browser-accessible AI image generation environment.
 
 Stable Diffusion is one of the most popular open-source text-to-image models.
 
-Benefits include:
+### Benefits
 
 - Free and open source
 - Unlimited image generation
-- Complete control over parameters
+- Complete control over generation parameters
 - Supports local and cloud deployment
-- No subscription fees
-- Large community and ecosystem
+- No subscription costs
+- Large and active ecosystem
+- Extensive community support
 
 ---
 
 ## Why Kaggle?
 
-Running Stable Diffusion requires a dedicated GPU.
+Running Stable Diffusion effectively requires GPU acceleration.
 
-Instead of using local hardware, Kaggle provides free cloud resources including:
+Instead of using local hardware, Kaggle provides:
 
 - Tesla T4 GPUs
 - Cloud storage
-- Notebook environments
+- Managed notebook environments
 - Internet access
+- Free experimentation environment
 
-This makes it possible to experiment with image generation models without owning high-end hardware.
+This makes it possible to explore AI image generation without investing in expensive hardware.
 
 ---
 
@@ -104,7 +106,7 @@ git clone https://github.com/comfyanonymous/ComfyUI.git
 cd ComfyUI
 ```
 
-### 2. Install Required Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -116,7 +118,7 @@ pip install -r requirements.txt
 mkdir -p models/checkpoints
 
 wget -O models/checkpoints/v1-5-pruned-emaonly.safetensors \
-https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5
+https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors
 ```
 
 ### 4. Launch ComfyUI
@@ -138,25 +140,32 @@ def run():
 threading.Thread(target=run, daemon=True).start()
 ```
 
-### 5. Create a Public Tunnel
+### 5. Download Cloudflare Tunnel
+
+```bash
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+chmod +x cloudflared-linux-amd64
+```
+
+### 6. Expose ComfyUI to the Browser
 
 ```bash
 ./cloudflared-linux-amd64 tunnel --url http://localhost:8188 --no-autoupdate
 ```
 
-The generated Cloudflare URL provides browser access to the ComfyUI interface.
+The generated Cloudflare URL provides public browser access to the locally running ComfyUI instance.
 
 ---
 
 ## Understanding the Workflow
 
-The image generation pipeline consists of the following nodes.
+The image generation pipeline consists of the following key nodes:
 
 ### 1. Load Checkpoint
 
 Loads the Stable Diffusion model into memory.
 
-Model Used:
+**Model Used**
 
 ```text
 v1-5-pruned-emaonly.safetensors
@@ -166,7 +175,7 @@ v1-5-pruned-emaonly.safetensors
 
 ### 2. CLIP Text Encode
 
-Converts human-readable prompts into numerical representations that the model can understand.
+Converts human-readable prompts into numerical embeddings that the model can understand.
 
 Used for:
 
@@ -177,32 +186,32 @@ Used for:
 
 ### 3. Empty Latent Image
 
-Creates the initial latent space (random noise) that acts as the starting point for image generation.
+Creates an initial latent representation (noise) that serves as the starting point for image generation.
 
 ---
 
 ### 4. KSampler
 
-The core generation engine.
-
-Responsibilities:
+The core generation engine responsible for:
 
 - Denoising
+- Sampling
 - Image synthesis
-- Sampling operations
 - Prompt-guided generation
+
+This is where the model transforms noise into meaningful visual content.
 
 ---
 
 ### 5. VAE Decode
 
-Converts latent representations into actual viewable images.
+Converts latent representations into actual images that can be viewed and saved.
 
 ---
 
 ### 6. Save Image
 
-Stores generated images to the output directory.
+Stores the generated output in the configured output directory.
 
 ---
 
@@ -229,6 +238,32 @@ Save Image
 
 ---
 
+## Generation Workflow
+
+```text
+Text Prompt
+      │
+      ▼
+CLIP Text Encoding
+      │
+      ▼
+Stable Diffusion Model
+      │
+      ▼
+Latent Noise Generation
+      │
+      ▼
+KSampler Denoising Process
+      │
+      ▼
+VAE Decoding
+      │
+      ▼
+Generated Image
+```
+
+---
+
 ## Sample Prompt
 
 ### Positive Prompt
@@ -246,9 +281,29 @@ blurry, low quality, watermark, distorted
 
 ---
 
+## Results
+
+Successfully deployed Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs and generated images through a browser-accessible interface.
+
+### Generation Configuration
+
+- Model: Stable Diffusion 1.5
+- Resolution: 512 × 512
+- Steps: 30
+- CFG Scale: 7
+- Sampler: Euler
+
+### Observed Performance
+
+- Image generation time: ~9 seconds
+- Hardware: Tesla T4 GPU
+- Environment: Kaggle Notebook
+
+---
+
 ## Generated Output
 
-Images are generated and stored in:
+Images are stored in:
 
 ```text
 ComfyUI/output
@@ -271,19 +326,35 @@ ComfyUI_00001_.png
 ### Generated Image
 
 ![Stable Diffusion Generated Output](screenshots/generated_output.png)
+
 ---
 
 ## Key Learnings
 
-Through this project I gained practical exposure to:
+Through this project, I gained practical exposure to:
 
 - Stable Diffusion architecture
+- Generative AI image pipelines
 - GPU-based AI inference
 - ComfyUI node-based workflows
 - Prompt engineering
 - Cloud-based deployment environments
 - Cloudflare Tunnel integration
-- AI image generation pipelines
+- Model deployment and inference workflows
+- AI image generation using text prompts
+
+---
+
+## Challenges Faced
+
+During implementation, the originally referenced Stable Diffusion repository used in the learning material was unavailable. To overcome this, the deployment approach was adapted by:
+
+- Switching from Automatic1111 to ComfyUI
+- Using Cloudflare Tunnel instead of Ngrok
+- Manually downloading and configuring Stable Diffusion 1.5
+- Creating a custom image generation workflow
+
+This provided a deeper understanding of the underlying deployment process.
 
 ---
 
@@ -292,15 +363,34 @@ Through this project I gained practical exposure to:
 Potential enhancements include:
 
 - Stable Diffusion XL (SDXL)
-- Flux Models
+- FLUX Models
 - ControlNet Integration
 - LoRA Training
 - Image-to-Image Generation
-- AI Logo Generation Workflows
+- Inpainting Workflows
+- AI Logo Generation
+- Character Generation Pipelines
 - Custom Model Fine-Tuning
+- API-Based Deployment
+
+---
+
+## Repository Structure
+
+```text
+stable-diffusion-comfyui-kaggle/
+│
+├── README.md
+│
+└── screenshots/
+    ├── workflow.png
+    └── generated_output.png
+```
 
 ---
 
 ## Disclaimer
 
-This repository is intended for educational and learning purposes to understand modern AI image generation systems and deployment workflows.
+This repository is intended for educational and learning purposes to understand modern AI image generation systems, deployment workflows, and cloud-based GPU environments.
+
+The Stable Diffusion model and ComfyUI framework belong to their respective creators and maintainers.
