@@ -266,12 +266,11 @@ ComfyUI_00001_.png
 
 ### Workflow
 
-screenshots/workflow.png
+![ComfyUI Stable Diffusion Workflow](screenshots/workflow.png)
 
 ### Generated Image
 
-screenshots/generated_output.png
-
+![Stable Diffusion Generated Output](screenshots/generated_output.png)
 ---
 
 ## Key Learnings
