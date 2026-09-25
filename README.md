@@ -283,17 +283,17 @@ blurry, low quality, watermark, distorted
 
 ## Results
 
-Successfully configured Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs and generated images through a browser-accessible interface.
+Successfully configured and ran Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs, generating images through a browser-accessible interface exposed via Cloudflare Tunnel.
 
-## Execution Environment
+## Execution Environment & Resource Utilization
 
 The project was executed on Kaggle's cloud infrastructure using GPU acceleration.
-
-## Resource Utilization
 
 The following resource usage was observed while running Stable Diffusion 1.5 with ComfyUI on Kaggle:
 
 ### Runtime Statistics
+
+The following values were observed during the execution of the workflow and may vary depending on image resolution, sampler settings, and model configuration.
 
 - RAM Usage: ~6.7 GB
 - GPU 1 Memory Usage: ~2.3 GB VRAM
@@ -303,13 +303,14 @@ The following resource usage was observed while running Stable Diffusion 1.5 wit
 
 ### Environment
 
-- GPU: 2 × NVIDIA Tesla T4
-- Total System RAM: ~30 GB
 - Platform: Kaggle Notebooks
+- GPUs: 2 × NVIDIA Tesla T4
+- Total Available System RAM: ~30 GB
+- Total Available GPU Memory: ~15 GB VRAM per GPU
 
 ### Generation Configuration
 
-- Model: Stable Diffusion 1.5
+- Model: Stable Diffusion 1.5 (`v1-5-pruned-emaonly.safetensors`)
 - Resolution: 512 × 512
 - Steps: 30
 - CFG Scale: 7
@@ -317,9 +318,9 @@ The following resource usage was observed while running Stable Diffusion 1.5 wit
 
 ### Observed Performance
 
-- Image generation time: ~9 seconds
-- Hardware: Tesla T4 GPU
-- Environment: Kaggle Notebook
+- Average Image Generation Time: ~9 seconds
+- Inference Environment: Kaggle Cloud GPUs
+- Inference Hardware: NVIDIA Tesla T4
 
 ---
 
