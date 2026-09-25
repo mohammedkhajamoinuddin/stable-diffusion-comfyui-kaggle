@@ -2,11 +2,13 @@
 
 ## Overview
 
-This project demonstrates the setup and usage of Stable Diffusion 1.5 using ComfyUI on Kaggle's free Tesla T4 GPUs.
+This project demonstrates the setup and usage of Stable Diffusion 1.5 using ComfyUI on Kaggle's free cloud GPUs.
 
 The primary objective was to understand the complete image generation workflow, from model setup and GPU utilization to prompt-based image generation through a browser-accessible interface.
 
-Instead of relying on paid AI image generation platforms, this setup allows Stable Diffusion to run on free cloud infrastructure provided by Kaggle.
+Instead of performing the computations on local hardware, the image generation pipeline was executed using Kaggle's cloud infrastructure, which provided NVIDIA Tesla T4 GPUs, system memory, and compute resources required to run Stable Diffusion efficiently.
+
+This approach enabled experimentation with AI image generation without needing a high-end workstation or dedicated GPU.
 
 ---
 
@@ -45,17 +47,21 @@ Stable Diffusion is one of the most popular open-source text-to-image models.
 
 ## Why Kaggle?
 
-Running Stable Diffusion effectively requires GPU acceleration.
+Running Stable Diffusion efficiently requires significant computational resources, particularly GPU acceleration. Generating images locally can be challenging on entry-level laptops due to limited RAM and the absence of dedicated AI-capable GPUs.
 
-Instead of using local hardware, Kaggle provides:
+To overcome this limitation, I used Kaggle's free cloud computing environment, which provides:
 
-- Tesla T4 GPUs
-- Cloud storage
-- Managed notebook environments
-- Internet access
-- Free experimentation environment
+- NVIDIA Tesla T4 GPUs
+- Cloud-hosted RAM and storage
+- Managed Jupyter Notebook environments
+- Internet connectivity
+- Free access to GPU-accelerated computing
 
-This makes it possible to explore AI image generation without investing in expensive hardware.
+This means the image generation workload was executed entirely on Kaggle's cloud infrastructure rather than my local machine.
+
+During execution, Stable Diffusion utilized Kaggle-provided resources including GPU memory, system RAM, and compute power to perform image generation tasks.
+
+By leveraging cloud resources, it was possible to run Stable Diffusion 1.5, generate images in approximately 9 seconds per image, and experiment with AI workflows without requiring expensive local hardware.
 
 ---
 
