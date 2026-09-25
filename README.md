@@ -285,6 +285,28 @@ blurry, low quality, watermark, distorted
 
 Successfully configured Stable Diffusion 1.5 using ComfyUI on Kaggle's Tesla T4 GPUs and generated images through a browser-accessible interface.
 
+## Execution Environment
+
+The project was executed on Kaggle's cloud infrastructure using GPU acceleration.
+
+## Resource Utilization
+
+The following resource usage was observed while running Stable Diffusion 1.5 with ComfyUI on Kaggle:
+
+### Runtime Statistics
+
+- RAM Usage: ~6.7 GB
+- GPU 1 Memory Usage: ~2.3 GB VRAM
+- GPU 2 Memory Usage: ~113 MB VRAM
+- Disk Usage: ~2 GB
+- Session Runtime: ~57 minutes
+
+### Environment
+
+- GPU: 2 × NVIDIA Tesla T4
+- Total System RAM: ~30 GB
+- Platform: Kaggle Notebooks
+
 ### Generation Configuration
 
 - Model: Stable Diffusion 1.5
@@ -361,23 +383,3 @@ Potential enhancements include:
 - API-Based Deployment
 
 ---
-
-## Repository Structure
-
-```text
-stable-diffusion-comfyui-kaggle/
-│
-├── README.md
-│
-└── screenshots/
-    ├── workflow.png
-    └── generated_output.png
-```
-
----
-
-## Disclaimer
-
-This repository is intended for educational and learning purposes to understand modern AI image generation systems, deployment workflows, and cloud-based GPU environments.
-
-The Stable Diffusion model and ComfyUI framework belong to their respective creators and maintainers.
