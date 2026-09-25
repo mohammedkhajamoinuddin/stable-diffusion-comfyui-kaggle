@@ -345,17 +345,6 @@ Through this project, I gained practical exposure to:
 
 ---
 
-## Challenges Faced
-
-During implementation, the originally referenced Stable Diffusion repository used in the learning material was unavailable. To overcome this, the setup approach was adapted by:
-
-- Switching from Automatic1111 to ComfyUI
-- Using Cloudflare Tunnel instead of Ngrok
-- Manually downloading and configuring Stable Diffusion 1.5
-- Creating a custom image generation workflow
-
----
-
 ## Future Improvements
 
 Potential enhancements include:
